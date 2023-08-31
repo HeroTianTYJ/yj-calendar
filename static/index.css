@@ -1,0 +1,74 @@
+@charset "UTF-8";
+* {
+    margin: 0;
+    padding: 0;
+}
+.red {
+    color: #F00;
+}
+input.button {
+    padding: 6px 15px;
+    background: #0059FF;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 28px;
+    cursor: pointer;
+    border: 1px solid #0059FF;
+    outline: none;
+}
+input.button:hover {
+    background: #226FFF;
+}
+p {
+    margin: 10px 0;
+    font-size: 35px;
+}
+.layui-form .form-select .select-title .input {
+    width: 180px;
+    height: 40px;
+    font-size: 35px;
+}
+.layui-form .form-select dl.anim {
+    top: 40px;
+    z-index: 999999;
+    background: #fff;
+}
+table {
+    width: 98%;
+    margin: 0 auto 10px auto;
+    border-collapse: collapse;
+}
+table tr th {
+    padding: 8px 0;
+    font-size: 45px;
+}
+table tr.month th {
+    background: #DDD;
+}
+table tr.week th {
+    background: #eee;
+    width: 100px;
+    border: 1px solid #DDD;
+}
+table tr.day td {
+    text-align: center;
+    padding: 8px 0;
+    border: 1px solid #DDD;
+}
+table tr.day td span {
+    display: inline-block;
+    line-height: 130%;
+}
+table.type0 tr.day td {
+    font-size: 37px;
+}
+table.type1 tr.day td {
+    font-size: 45px;
+}
+
+@media print {
+    @page {
+        size: A4 landscape;
+        margin: 3mm 0 0 0;
+    }
+}
