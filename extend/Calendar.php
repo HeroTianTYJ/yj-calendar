@@ -140,7 +140,7 @@ class Calendar
 
     private function prevYearUrl()
     {
-        return '?year=' . ($this->year <= 1891 ? 1891 : $this->year - 1);
+        return '?year=' . ($this->year <= 1892 ? 1892 : $this->year - 1);
     }
 
     private function nextYearUrl()
