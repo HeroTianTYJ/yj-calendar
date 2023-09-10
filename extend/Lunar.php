@@ -239,11 +239,11 @@ class Lunar
         $start = new Solar($xiaZhi->getYear(), $xiaZhi->getMonth(), $xiaZhi->getDay());
         $add = 6 - $xiaZhi->getLunar()->dayGanIndex;
         $add += 20;
+
         $start = $start->next($add);
         if ($current->isBefore($start)) {
             return '';
         }
-
         $days = $current->subtract($start);
         if ($days == 0) {
             return '入伏';
@@ -254,16 +254,13 @@ class Lunar
         if ($days == 0) {
             return '中伏';
         }
+
         $start = $start->next(10);
         $days = $current->subtract($start);
         if ((new Solar($liQiu->getYear(), $liQiu->getMonth(), $liQiu->getDay()))->isAfter($start)) {
-            if ($days == 0) {
-                return '中伏';
-            }
             $start = $start->next(10);
             $days = $current->subtract($start);
         }
-
         if ($days == 0) {
             return '末伏';
         }
