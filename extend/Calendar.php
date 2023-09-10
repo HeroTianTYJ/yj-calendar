@@ -88,9 +88,8 @@ class Calendar
             $lunar = $this->lunar($this->year, $month, $j);
             $solarTerm = $this->solarTerm($this->year, $month, $j);
             $festival = $this->festival($month . '-' . $j, $lunar[0] . $lunar[1]);
-            $lunar2 = (new Solar($this->year, $month, $j))->getLunar();
-            $shuJiu = $lunar2->getShuJiu();
-            $fu = $lunar2->getFu();
+            $shuJiuAndFu = $this->shuJiuAndFu($month, $j);
+
             $note = [];
             if ($lunar[1] == '初一') {
                 $note[] = $lunar[0];
@@ -101,11 +100,8 @@ class Calendar
             if ($festival) {
                 $note[] = $festival;
             }
-            if ($shuJiu) {
-                $note[] = $shuJiu;
-            }
-            if ($fu) {
-                $note[] = $fu;
+            if ($shuJiuAndFu) {
+                $note[] = $shuJiuAndFu;
             }
             $fontsize = 35;
             $noteStr = $note ? implode('/', $note) : $lunar[1];
@@ -305,6 +301,27 @@ class Calendar
             $result = '感恩节';
         }
         return $result;
+    }
+
+    private function shuJiuAndFu($month, $day)
+    {
+        if (isset($GLOBALS['config'][$this->year])) {
+            $config = $GLOBALS['config'][$this->year];
+            $shuJiu = $fu = '';
+            if (isset($config[$month . '-' . $day])) {
+                $temp = $config[$month . '-' . $day];
+                if (substr($temp, 0, 1) == '9') {
+                    $shuJiu = ['入', '二', '三', '四', '五', '六', '七', '八', '九'][substr($temp, 1)] . '九';
+                }
+                if (substr($temp, 0, 1) == '3') {
+                    $fu = ['入', '中', '末'][substr($temp, 1)] . '伏';
+                }
+            }
+            return $shuJiu . $fu;
+        } else {
+            $lunar = (new Solar($this->year, $month, $day))->getLunar();
+            return $lunar->getShuJiu() . $lunar->getFu();
+        }
     }
 
     private function year()
