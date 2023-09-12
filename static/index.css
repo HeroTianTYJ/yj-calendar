@@ -37,6 +37,7 @@ table {
     width: 98%;
     margin: 0 auto 10px auto;
     border-collapse: collapse;
+    font-family: Simsun, serif;
 }
 table tr th {
     padding: 8px 0;
