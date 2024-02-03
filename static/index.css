@@ -33,6 +33,10 @@ p {
     z-index: 999999;
     background: #fff;
 }
+.layui-form .form-select dl.anim dd {
+    text-align: left;
+    font-weight: normal;
+}
 table {
     width: 98%;
     margin: 0 auto 10px auto;
