@@ -47,7 +47,7 @@ class Calendar
             $html .= $this->month($value);
         }
         if (strstr($html, '除夕2')) {
-            $html = str_replace(['/除夕1', '除夕1', '除夕2'], ['', '廿久', '除夕'], $html);
+            $html = str_replace(['/除夕1', '除夕1', '除夕2'], ['', '廿九', '除夕'], $html);
         } elseif (strstr($html, '除夕1')) {
             $html = str_replace('除夕1', '除夕', $html);
         }
