@@ -233,6 +233,9 @@ class Calendar
         $yearLastTwo = substr($year, -2);
         $idx = $month * 2 - 2;
         $leap = floor(($yearLastTwo - 1) / 4);
+        if ($this->isLeapYear($year) && $month > 2) {
+            $leap++;
+        }
         $day1 = floor($yearLastTwo * 0.2422 + $coefficient[$idx][0]) - $leap;
         if (isset($coefficient[$idx][1]) && $coefficient[$idx][1] == $year) {
             $day1 += $coefficient[$idx][2];
@@ -248,6 +251,11 @@ class Calendar
             $result = $solarTerm[$idx + 1];
         }
         return $result;
+    }
+
+    private function isLeapYear($year)
+    {
+        return ($year % 4 === 0 && $year % 100 != 0) || ($year % 400 === 0);
     }
 
     private function festival($solarDate = '', $lunarDate = '')
